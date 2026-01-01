@@ -68,7 +68,7 @@ public class JogoService {
     }
 
     public List<Jogo> buscarNovidades() {
-        return jogoRepository.findTop4ByOrderByDataLancamentoDesc();
+        return jogoRepository.findTop20ByOrderByDataLancamentoDesc();
     }
 
     public List<Jogo> buscarPorPlataforma(String plataforma) {

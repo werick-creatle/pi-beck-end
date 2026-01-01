@@ -8,7 +8,7 @@ public interface  JogoRepository   extends JpaRepository<Jogo, Long> {
 
     boolean existsByNomeIgnoreCase(String nome);
 
-    List<Jogo> findTop4ByOrderByDataLancamentoDesc();
+    List<Jogo> findTop20ByOrderByDataLancamentoDesc();
 
     List<Jogo> findByPlataformaIgnoreCase(String plataforma);
 }

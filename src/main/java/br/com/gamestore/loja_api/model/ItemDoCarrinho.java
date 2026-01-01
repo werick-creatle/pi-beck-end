@@ -1,17 +1,14 @@
 package br.com.gamestore.loja_api.model;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "tb_item_carrinho")
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"carrinho", "jogo"})
+@EqualsAndHashCode(of = "id")
 public class ItemDoCarrinho {
 
     @Id
@@ -19,7 +16,8 @@ public class ItemDoCarrinho {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "carrinho_tb")
+    @JoinColumn(name = "carrinho_id")
+    @ToString.Exclude
     private Carrinho carrinho;
 
     @ManyToOne

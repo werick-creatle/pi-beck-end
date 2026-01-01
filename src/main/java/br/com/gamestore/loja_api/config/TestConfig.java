@@ -1,5 +1,4 @@
 package br.com.gamestore.loja_api.config;
-
 import br.com.gamestore.loja_api.model.Carrinho;
 import br.com.gamestore.loja_api.model.Jogo;
 import br.com.gamestore.loja_api.model.Usuario;
@@ -11,7 +10,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -19,32 +17,17 @@ import java.util.List;
 
 @Configuration
 public class TestConfig {
-
     @Autowired
     private JogoRepository jogoRepository;
-
     @Autowired
     private UsuarioRepository usuarioRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Bean
     public CommandLineRunner initDatabase() {
         return args -> {
-
-            // --- 1. POPULAR JOGOS ---
-            // (Verifica se o banco já tem jogos, já que o deleteAll() está comentado)
             if (jogoRepository.count() == 0) {
                 System.out.println(">>> Populando banco de dados com 24 jogos...");
-
-                // Lista única com todos os 24 jogos (com quantidadeEstoque = 100)
-
-
-
-
-
-
                 List<Jogo> jogosParaSalvar = Arrays.asList(
                         new Jogo(null, "Elden Ring", "RPG de ação em mundo aberto com exploração profunda e combates desafiadores.", new BigDecimal("149.99"), "PC", "RPG", "https://upload.wikimedia.org/wikipedia/pt/0/0d/Elden_Ring_capa.jpg", LocalDate.parse("2022-02-25"), 100),
                         new Jogo(null, "Baldurs Gate 3", "RPG tático com narrativa ramificada e combate por turnos baseado em D&D.", new BigDecimal("199.99"), "PC", "RPG", "https://m.media-amazon.com/images/I/71TGuDCUDrL._AC_UF1000,1000_QL80_.jpg", LocalDate.parse("2023-08-03"), 100),
@@ -83,7 +66,7 @@ public class TestConfig {
                         new Jogo(null, "Control Ultimate Edition", "Ação sobrenatural com design de níveis surreal e poderes telecinéticos.", new BigDecimal("49.99"), "PC", "Ação", "https://i.redd.it/h7qzlwl8jtg51.png", LocalDate.parse("2019-08-27"), 100),
                         new Jogo(null, "Sea of Thieves", "Aventura pirata cooperativa focada em exploração e combates navais.", new BigDecimal("99.99"), "PC", "Aventura", "https://upload.wikimedia.org/wikipedia/pt/9/9d/Sea_of_thieves_box.jpg", LocalDate.parse("2018-03-20"), 100),
                         new Jogo(null, "Hellblade: Senuas", "Aventura sombria que mistura combate e representação intensa de temas psicológicos.", new BigDecimal("49.99"), "PC", "Ação", "https://upload.wikimedia.org/wikipedia/pt/2/28/Hellblade_poster.jpg", LocalDate.parse("2017-08-08"), 100),
-                        new Jogo(null, "Disco Elysium", "RPG focado em investigação, diálogos e escolhas filosóficas profundas.", new BigDecimal("79.99"), "PC", "RPG", "https://www.adrenaline.com.br/wp-content/uploads/2023/08/disco-elysium-the-final-cut-capa.jpg", LocalDate.parse("2019-10-15"), 100),
+                        new Jogo(null, "Disco Elysium", "RPG focado em investigação, diálogos e escolhas filosóficas profundas.", new BigDecimal("79.99"), "PC", "RPG", "https://www.adrenaline.com.br/wp-content/uploads/2023-08/disco-elysium-the-final-cut-capa.jpg", LocalDate.parse("2019-10-15"), 100),
                         new Jogo(null, "Guardians of the Galaxy", "Aventura narrativa baseada em humor e combate em terceira pessoa.", new BigDecimal("79.99"), "PC", "Ação", "https://upload.wikimedia.org/wikipedia/pt/9/91/Guardians_of_the_Galaxy_capa.png", LocalDate.parse("2021-10-26"), 100),
                         new Jogo(null, "Sifu", "Beat 'em up com sistema de envelhecimento que altera gameplay e desafios.", new BigDecimal("99.99"), "PC", "Ação", "https://upload.wikimedia.org/wikipedia/pt/8/88/Sifu_capa.jpg", LocalDate.parse("2022-02-08"), 100),
                         new Jogo(null, "Hitman", "Simulação stealth com contratos e soluções criativas para assassinatos.", new BigDecimal("149.99"), "PC", "Stealth", "https://preview.redd.it/classic-styled-cover-for-the-modern-hitman-games-v0-g8rpjea5s2g81.png?width=600&format=png&auto=webp&s=b3fd10756937aae10ca1c6ecfcbd06a8625d8812", LocalDate.parse("2016-03-11"), 100),
@@ -146,172 +129,72 @@ public class TestConfig {
                         new Jogo(null, "Divinity: Original Sin 2", "RPG tático com coop e liberdade total para abordagens criativas.", new BigDecimal("119.99"), "PC", "RPG", "https://image.api.playstation.com/cdn/UP3526/CUSA12611_00/A2Mt96jRTqaw5EtIwCHkUZXGpvqIZmSF.png", LocalDate.parse("2017-09-14"), 100),
                         new Jogo(null, "Outer Wilds", "Exploração espacial em loop temporal com foco em descoberta e mistério.", new BigDecimal("74.99"), "PC", "Aventura", "https://image.api.playstation.com/vulcan/ap/rnd/202208/1623/Zofebh60Ue7Zt5sC10UAtU3D.png", LocalDate.parse("2019-05-28"), 100),
                         new Jogo(null, "Roblox", "Plataforma de criação e jogos feitos por usuários com enorme variedade de experiências.", new BigDecimal("0.00"), "PC", "Plataforma", "https://i.pinimg.com/236x/26/f4/60/26f460a6a936754124c40b668a2026e4.jpg?nii=t", LocalDate.parse("2006-09-01"), 100),
-
-
-
-
-
-
-                        // novos jogos XBOX
                         new Jogo(null, "Killing Floor 3", "Ação cooperativa intensa contra hordas mutantes em arenas cheias de tensão e estratégia.", new BigDecimal("24.99"), "Xbox", "Ação", "https://cdn1.epicgames.com/spt-assets/909dbdb5fabb4002bc0d3f0382be5361/killing-floor-3-odzi5.jpg", LocalDate.parse("2025-02-10"), 100),
-
                         new Jogo(null, "Mafia: The Old Country", "Drama criminal com escolhas duras, intrigas familiares e um mundo mafioso cheio de estilo.", new BigDecimal("299.99"), "Xbox", "Drama", "https://m.media-amazon.com/images/M/MV5BYzNjOWUxNjAtZTBhMi00ZjM3LTg5YWQtZTk1MzE5YjkzNTE2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg", LocalDate.parse("2025-02-11"), 100),
-
                         new Jogo(null, "FragPunk", "Hero-shooter veloz com poderes únicos, partidas dinâmicas e reviravoltas em cada rodada.", new BigDecimal("20.99"), "Xbox", "Ação", "https://cdn1.epicgames.com/spt-assets/d66803a6d719483f8659cbffdf5c8204/fragpunk-q2ata.jpg", LocalDate.parse("2025-02-12"), 100),
-
                         new Jogo(null, "Echoes of the End", "Aventura narrativa com magia, mistério e decisões que transformam a jornada da protagonista.", new BigDecimal("239.99"), "Xbox", "Aventura", "https://m.media-amazon.com/images/M/MV5BMDI4ZGY3OTktZmM0NC00M2I2LWJlMzktYjczNDdkMmZmMzFjXkEyXkFqcGc@._V1_.jpg", LocalDate.parse("2025-02-13"), 100),
-
                         new Jogo(null, "Metal Eden", "Ação futurista com combates brutais e um mundo metálico dominado por máquinas hostis.", new BigDecimal("119.99"), "Xbox", "Ação", "https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Metal_Eden_cover.png/250px-Metal_Eden_cover.png", LocalDate.parse("2025-02-14"), 100),
-
                         new Jogo(null, "Styx: Blades of Greed", "Furtividade tática com humor ácido, infiltração precisa e escolhas que moldam cada missão.", new BigDecimal("299.99"), "Xbox", "Stealth", "https://image.api.playstation.com/vulcan/ap/rnd/202509/0808/ed252cada24d0c52d87c1f41f75b7b02fdde36460254387e.jpg", LocalDate.parse("2025-02-15"), 100),
-
                         new Jogo(null, "RoboCop: Rogue City – Unfinished Business", "Tiro policial com decisões morais, lei nas ruas e uma Detroit tomada pelo crime.", new BigDecimal("179.99"), "Xbox", "Ação", "https://upload.wikimedia.org/wikipedia/pt/2/2e/RoboCop_Rogue_City.jpg", LocalDate.parse("2025-02-16"), 100),
-
                         new Jogo(null, "RENNSPORT", "Corridas realistas com física detalhada, precisão milimétrica e disputas de alta velocidade.", new BigDecimal("299.99"), "Xbox", "Corrida", "https://www.rennsport.gg/wp-content/uploads/2025/08/cover_1-1-V2-748x1024.png", LocalDate.parse("2025-02-17"), 100),
-
                         new Jogo(null, "Ninja Gaiden 4", "Ação frenética com combates desafiadores, combos acrobáticos e uma narrativa cheia de honra.", new BigDecimal("329.99"), "Xbox", "Ação", "https://cms-assets.xboxservices.com/assets/c2/3f/c23f3b16-039d-4478-ad8d-48a853609693.jpg?n=4990200040_Product-Placement-0_2_780x1170.jpg", LocalDate.parse("2025-02-18"), 100),
-
                         new Jogo(null, "The Outer Worlds 2", "RPG espacial com humor satírico, escolhas importantes e facções cheias de personalidade.", new BigDecimal("419.99"), "Xbox", "RPG", "https://upload.wikimedia.org/wikipedia/en/d/d9/The_Outer_Worlds_2_cover_art.png", LocalDate.parse("2025-02-19"), 100),
-
                         new Jogo(null, "Like a Dragon: Pirate Yakuza in Hawaii", "Ação excêntrica com humor absurdo, batalhas estilosas e viagens caóticas pelas ilhas.", new BigDecimal("359.99"), "Xbox", "Ação", "https://cdn.awsli.com.br/600x700/2739/2739953/produto/308581671/ladpyih_vertical_cover-a7ryen8k51.jpg", LocalDate.parse("2025-02-20"), 100),
-
                         new Jogo(null, "Civilization VII", "Estratégia por turnos com decisões históricas, expansão de impérios e diplomacia profunda.", new BigDecimal("299.99"), "Xbox", "Estratégia", "https://meups.com.br/wp-content/uploads/2025/03/Civilization-VII-1.png", LocalDate.parse("2025-02-21"), 100),
-
                         new Jogo(null, "Judas", "FPS narrativo com escolhas intensas, relações complicadas e tensão a cada zona explorada.", new BigDecimal("359.99"), "Xbox", "FPS", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzWQey3w3iSqNq_ypc2DvrbTOpWsykKcfqGA&s", LocalDate.parse("2025-02-23"), 100),
-
                         new Jogo(null, "MindsEye", "Thriller futurista com mistérios conspiratórios, ação cinemática e decisões psicológicas.", new BigDecimal("389.99"), "Xbox", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202503/1215/627007fb0f5fff02265c0ca5bc14f1edc80174276d30ed0b.png", LocalDate.parse("2025-02-24"), 100),
-
                         new Jogo(null, "Pipistrello and the Cursed Yoyo", "Aventura leve com humor criativo, quebra-cabeças mágicos e um yoyo encantado cheio de truques.", new BigDecimal("149.99"), "Xbox", "Aventura", "https://image.api.playstation.com/vulcan/ap/rnd/202503/1118/4d78b379dc808231cbb67911fecf85d21fece22ef9e3662c.jpg", LocalDate.parse("2025-02-25"), 100),
-
                         new Jogo(null, "Judas (Edição Deluxe)", "Ação narrativa imersiva, dilemas morais e conteúdo extra que aprofunda o universo do jogo.", new BigDecimal("449.99"), "Xbox", "FPS", "https://upload.wikimedia.org/wikipedia/pt/9/9b/Judas_capa.jpg", LocalDate.parse("2025-02-26"), 100),
-
                         new Jogo(null, "State of Decay 3", "Sobrevivência estratégica com decisões difíceis, comunidades frágeis e um mundo brutal.", new BigDecimal("399.99"), "Xbox", "Sobrevivência", "https://notadogame.com/uploads/game/cover/250x/5f1c629bd2d6e.jpg", LocalDate.parse("2025-02-27"), 100),
-
                         new Jogo(null, "Gears of War: Reloaded (Remaster)", "Ação tática com combates pesados, narrativa militar intensa e cenários devastados pela guerra.", new BigDecimal("299.99"), "Xbox", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202504/2818/6222f35e03490b9ab85092005f6c4843af9f18fba47bdab9.png", LocalDate.parse("2025-02-28"), 100),
-
                         new Jogo(null, "Civilization VII Expansion", "Expansão estratégica com novas civilizações e mecânicas adicionais.", new BigDecimal("199.99"), "Xbox", "Estratégia", "https://assets.2k.com/1a6ngf98576c/4OxRFSWejBQcdZlNXQb52L/c972995d2a04d605e5204a007ebf46f1/Desktop_Retail_FOBs_425x535_Founders.png", LocalDate.parse("2025-02-27"), 100),
-
                         new Jogo(null, "High on Life 2", "Ação com humor insano, armas falantes e decisões absurdas em um universo totalmente caótico.", new BigDecimal("279.99"), "Xbox", "Ação", "https://m.media-amazon.com/images/I/81QBqz+bqRL._UF1000,1000_QL80_.jpg", LocalDate.parse("2025-02-27"), 100),
-
-
-
-
-
-
-
-                        //jogos playstation
                         new Jogo(null, "Ghost of Yōtei", "Aventura samurai exclusiva do PS5, com combate intenso e narrativa cinematográfica no Monte Yōtei.", new BigDecimal("399.99"), "PS5", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202504/2116/395b45219557497b6580e4ce372f8dea604ee5dd16f45da5.png", LocalDate.parse("2025-05-01"), 100),
-
                         new Jogo(null, "Digimon Story: Time Stranger", "JRPG com viagens no tempo, batalhas estratégicas e evolução clássica dos Digimon.", new BigDecimal("299.99"), "PS5", "RPG", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOxa-tTCWekWIFfZRFdrGusiiVNOoznXiMQ&s", LocalDate.parse("2025-05-02"), 100),
-
                         new Jogo(null, "Days Gone Remastered", "Versão aprimorada do clássico de sobrevivência com gráficos atualizados e melhorias de desempenho.", new BigDecimal("259.99"), "PS5", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202502/1302/ce619ea43efc092af9e013b5dcb5c904987a7dab1a68b262.jpg", LocalDate.parse("2025-05-03"), 100),
-
                         new Jogo(null, "The Midnight Walk", "Aventura sombria com mistério psicológico e exploração guiada pela atmosfera do desconhecido.", new BigDecimal("349.99"), "PS5", "Aventura", "https://image.api.playstation.com/vulcan/ap/rnd/202409/1110/5bdf8506e4446c202b8ebf1f4b7b648149a6a07c5d8aae77.jpg", LocalDate.parse("2025-05-04"), 100),
-
                         new Jogo(null, "Stellar Blade", "Ação sci-fi intensa com combate fluido, chefes colossais e visual futurista de tirar o fôlego.", new BigDecimal("399.99"), "PS5", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202401/2211/52f53150c45b4e602695bec1a4ce855e4613c0626081ab20.jpg", LocalDate.parse("2025-04-05"), 100),
-
                         new Jogo(null, "Mafia: The Old Country", "Drama criminal com escolhas duras, intrigas familiares e uma ambientação mafiosa impecável.", new BigDecimal("299.99"), "PS5", "Drama", "https://m.media-amazon.com/images/M/MV5BYzNjOWUxNjAtZTBhMi00ZjM3LTg5YWQtZTk1MzE5YjkzNTE2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg", LocalDate.parse("2025-04-06"), 100),
-
                         new Jogo(null, "Lost Soul Aside", "RPG de ação estiloso com combate veloz, cenários fantásticos e narrativa épica.", new BigDecimal("429.99"), "PS5", "RPG", "https://m.media-amazon.com/images/M/MV5BZTgyMjljYjEtNjc0OC00MGM3LTlmMjQtYTYzMWIzNjAzNjgyXkEyXkFqcGc@._V1_.jpg", LocalDate.parse("2025-04-07"), 100),
-
                         new Jogo(null, "Hell is Us", "Aventura narrativa em um mundo devastado, focada em mistério, emoção e combate tenso.", new BigDecimal("339.99"), "PS5", "Aventura", "https://image.api.playstation.com/vulcan/ap/rnd/202505/1909/3e387e59545ff37d4312cef4c0d25d6eee3156e003b3eded.jpg", LocalDate.parse("2025-07-05"), 100),
-
                         new Jogo(null, "Octopath Traveler 0", "JRPG por turnos com oito protagonistas, múltiplos caminhos e visual clássico moderno.", new BigDecimal("299.99"), "PS5", "RPG", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk3NezRctGBWe-6DfnOZYyixy2wLq5yUhSKw&s", LocalDate.parse("2025-06-21"), 100),
-
                         new Jogo(null, "Killing Floor 3", "Coop frenético contra hordas mutantes com armas devastadoras e progressão estratégica.", new BigDecimal("249.99"), "PS5", "Ação", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3l6iqfhwTIP1kxBXEY5ugI3fH2vuW8tB-eg&s", LocalDate.parse("2025-02-10"), 100),
-
                         new Jogo(null, "Metal Eden", "Ação futurista intensa com máquinas hostis e um mundo metálico brutal.", new BigDecimal("119.99"), "PS5", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202501/1516/5a59526a26d03ce67695c0856e6816a0e9a5f5e0127e4868.png", LocalDate.parse("2025-05-11"), 100),
-
                         new Jogo(null, "Ninja Gaiden 4", "Hack-and-slash insano com combates acrobáticos e desafios de alta dificuldade.", new BigDecimal("329.99"), "PS5", "Ação", "https://cdn.awsli.com.br/600x700/2739/2739953/produto/356601380/26832-ninja-gaiden-4-capa-1-gjna7qcqlc.webp", LocalDate.parse("2025-09-10"), 100),
-
                         new Jogo(null, "RENNSPORT", "Simulação de corrida realista com física avançada e competições de alta precisão.", new BigDecimal("299.99"), "PS5", "Corrida", "https://www.rennsport.gg/wp-content/uploads/2025/08/cover_1-1-V2-748x1024.png", LocalDate.parse("2025-07-05"), 100),
-
                         new Jogo(null, "RoboCop: Rogue City – Unfinished Business", "FPS policial com moralidade, combate tático e uma Detroit dominada pelo crime.", new BigDecimal("179.99"), "PS5", "FPS", "https://cdn1.epicgames.com/offer/3a5c77a536854024add2714cbd0fa865/EGS_RoboCopRogueCity_Teyon_S2_1200x1600-3e666124c2088c599e35700623bef464", LocalDate.parse("2025-02-27"), 100),
-
                         new Jogo(null, "FragPunk", "Hero shooter tático com cartas de mutação, ação rápida e habilidades únicas por herói.", new BigDecimal("20.99"), "PS5", "Ação", "https://cdn1.epicgames.com/spt-assets/d66803a6d719483f8659cbffdf5c8204/fragpunk-q2ata.jpg", LocalDate.parse("2025-04-05"), 100),
-
                         new Jogo(null, "Blades of Fire", "Ação fantasia com combates elementais, monstros lendários e um mundo épico.", new BigDecimal("349.99"), "PS5", "Ação", "https://upload.wikimedia.org/wikipedia/en/7/7b/Blades_of_Fire_cover_art.jpg", LocalDate.parse("2025-05-28"), 100),
-
                         new Jogo(null, "MindsEye", "Thriller futurista com conspirações, ação cinematográfica e escolhas psicológicas.", new BigDecimal("389.99"), "PS5", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202503/1215/627007fb0f5fff02265c0ca5bc14f1edc80174276d30ed0b.png", LocalDate.parse("2025-09-04"), 100),
-
                         new Jogo(null, "Pipistrello and the Cursed Yoyo", "Aventura criativa com humor leve, quebra-cabeças mágicos e um ioiô encantado.", new BigDecimal("149.99"), "PS5", "Aventura", "https://image.api.playstation.com/vulcan/ap/rnd/202503/1118/4d78b379dc808231cbb67911fecf85d21fece22ef9e3662c.jpg", LocalDate.parse("2025-03-14"), 100),
-
                         new Jogo(null, "Octopath Traveler 0: Deluxe Edition", "Edição premium com conteúdos extras, artes exclusivas e itens adicionais.", new BigDecimal("449.99"), "PS5", "RPG", "https://image.api.playstation.com/vulcan/ap/rnd/202505/2109/667049fe0b016e1c9e3172dd1b0df28c8babfda5ab281a3b.png", LocalDate.parse("2025-07-02"), 100),
-
                         new Jogo(null, "Tides of Annihilation", "Ação sombria em um mundo consumido por forças ancestrais, exclusivo para PS5.", new BigDecimal("359.99"), "PS5", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202501/2008/9e421ef33a521be60004a66fbbfd0f064e77130cbf42ba0c.png", LocalDate.parse("2025-12-05"), 100),
-
-
-
-
-
-
-
-
-                        //Novos jogos lançamentos
-
                         new Jogo(null, "Elden Ring: Nightreign", "Expansão sombria e cooperativa dentro do universo brutal de Elden Ring, trazendo novos chefes e áreas amaldiçoadas.", new BigDecimal("399.99"), "PC / PS5 / Xbox Series", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202501/2901/9ff4b9fde2b7dce20fa282961454b7a81695d598eb5c7404.png", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "Monster Hunter Wilds", "RPG de ação em mundo aberto com ecossistemas vivos, criaturas colossais e caçadas dinâmicas.", new BigDecimal("349.99"), "PC / PS5 / Xbox Series", "RPG", "https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Monster_Hunter_Wilds_cover.png/250px-Monster_Hunter_Wilds_cover.png", LocalDate.parse("2026-10-02"), 100),
-
                         new Jogo(null, "Doom: The Dark Ages", "FPS medieval frenético, com brutalidade extrema, armas colossais e monstros infernais.", new BigDecimal("299.99"), "PC / PS5 / Xbox Series", "FPS", "https://image.api.playstation.com/vulcan/ap/rnd/202501/1405/5a9411754439a02d29f43dc71e6a5a953a087111c863d381.png", LocalDate.parse("2026-10-03"), 100),
-
                         new Jogo(null, "WWE 2K25", "Simulação de wrestling com novos modos, arenas e movimentos realistas.", new BigDecimal("299.99"), "PC / PS5 / Xbox Series", "Esporte", "https://assets.2k.com/1a6ngf98576c/p5GhY4Jg8w4ZD5oSY0gTL/01a0a23f86c88d21b54f2b7f1ea231bc/W2K_KEY_DlxEd_KA_Vert_20x24_BLEED_216_F1.jpg", LocalDate.parse("2026-10-04"), 100),
-
                         new Jogo(null, "High on Life 2", "Ação insana com armas falantes, humor absurdo e mundos extraterrestres vibrantes.", new BigDecimal("279.99"), "PC / PS5 / Xbox Series", "Ação", "https://m.media-amazon.com/images/I/81QBqz+bqRL._UF1000,1000_QL80_.jpg", LocalDate.parse("2026-10-05"), 100),
-
                         new Jogo(null, "Metal Eden", "FPS sci-fi com parkour, cidades futuristas e combate veloz contra máquinas hostis.", new BigDecimal("249.99"), "PC / PS5 / Xbox Series", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202501/1516/5a59526a26d03ce67695c0856e6816a0e9a5f5e0127e4868.png", LocalDate.parse("2026-10-05"), 100),
-
                         new Jogo(null, "Marvel Cosmic Invasion", "Beat ’em up colorido com heróis Marvel, combos devastadores e ação cooperativa.", new BigDecimal("219.99"), "PC / PS5 / Xbox Series", "Ação", "https://upload.wikimedia.org/wikipedia/pt/thumb/7/72/Marvel_Cosmic_Invasion_cover_art.jpg/250px-Marvel_Cosmic_Invasion_cover_art.jpg", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "Lost Soul Aside", "RPG de ação estiloso com combate ágil, monstros gigantes e estética cinematográfica.", new BigDecimal("399.99"), "PC / PS5 / Xbox Series", "RPG", "https://m.media-amazon.com/images/M/MV5BZTgyMjljYjEtNjc0OC00MGM3LTlmMjQtYTYzMWIzNjAzNjgyXkEyXkFqcGc@._V1_.jpg", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "NASCAR 25", "Simulação de corrida intensa com física aprimorada e campeonatos oficiais.", new BigDecimal("259.99"), "PC / PS5 / Xbox Series", "Corrida", "https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/NASCAR_25_Cover_Art.jpg/250px-NASCAR_25_Cover_Art.jpg", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "Hell is Us", "Aventura narrativa em um país devastado por guerra e criaturas misteriosas.", new BigDecimal("289.99"), "PC / PS5 / Xbox Series", "Aventura", "https://image.api.playstation.com/vulcan/ap/rnd/202505/1909/3e387e59545ff37d4312cef4c0d25d6eee3156e003b3eded.jpg", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "Borderlands 4", "Looter-shooter caótico com humor, armas absurdas e cooperativo frenético.", new BigDecimal("349.99"), "PC / PS5 / Xbox Series", "Ação", "https://cdn1.epicgames.com/spt-assets/20d989fc07a447b2af3c59e4fd5f49c7/borderlands-4-fnnpo.jpg", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "Shinobi: Art of Vengeance", "Plataforma ninja retrô com combate rápido e estética clássica modernizada.", new BigDecimal("149.99"), "PC / PS5 / Xbox Series", "Ação", "https://upload.wikimedia.org/wikipedia/en/0/0e/Shinobi_Art_of_Vengeance_Cover.webp", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "F1 25", "Simulação de Fórmula 1 com gráficos realistas e performance de nova geração.", new BigDecimal("349.99"), "PC / PS5 / Xbox Series", "Corrida", "https://image.api.playstation.com/vulcan/ap/rnd/202505/1521/73fc6fb9bad1b2e74180c166f0c7af9d3940e0d6a6e01525.png", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "Assassin’s Creed Shadows", "Aventura no Japão feudal com ninjas, samurais e mundo aberto detalhado.", new BigDecimal("399.99"), "PC / PS5 / Xbox Series", "Ação", "https://image.api.playstation.com/vulcan/ap/rnd/202404/1815/33f39cad34ac468a040ffed5a43149fb4329ec6c73326838.jpg", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "EA Sports FC 26", "Simulação de futebol com IA aprimorada, ligas oficiais e jogabilidade refinada.", new BigDecimal("349.99"), "PC / PS5 / Xbox Series", "Esporte", "https://cdn1.epicgames.com/offer/1d4d85b1051e41ee8f1a099e99d59f3f/EGS_EASPORTSFC26StandardEdition_EACANADA_S2_1200x1600-effee280c00b9890a0c5249d4b0e5c97", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "Cronos: The New Dawn", "RPG de fantasia com exploração, criaturas míticas e batalhas estratégicas.", new BigDecimal("269.99"), "PC / PS5 / Xbox Series", "RPG", "https://image.api.playstation.com/vulcan/ap/rnd/202410/1511/b60b574c32546f9b5d263b1b38a541abe35e250797f18bde.jpg", LocalDate.parse("2026-10-01"), 100),
-
                         new Jogo(null, "Tony Hawk’s Pro Skater 3+4 (Remaster)", "Skate clássico com visuais modernos, trilha icônica e manobras lendárias.", new BigDecimal("299.99"), "PS5", "Esporte", "https://image.api.playstation.com/vulcan/ap/rnd/202502/2101/322f386a7ffa30527e27e60a04e80016fa6c692dd339962a.jpg", LocalDate.parse("2026-10-01"), 100)
-
-
-
-
                 );
-
-
-
-
-
-
-
-
-
-
-
-
-
                 jogoRepository.saveAll(jogosParaSalvar);
                 System.out.println(">>> BANCO DE DADOS POPULADO COM 24 JOGOS! <<<");
             } else {
                 System.out.println(">>> BANCO DE JOGOS JÁ POSSUI DADOS. <<<");
             }
-
-            // --- 2. CRIAR USUÁRIO ADMIN ---
             System.out.println(">>> Verificando/Criando usuário ADMIN padrão...");
             if (usuarioRepository.findByLogin("admin@gamestore.com") == null) {
                 String senhaAdminCriptografada = passwordEncoder.encode("admin1G23");
-
-                // Cria o admin com carrinho nulo (como eu fiz no AuthController)
                 Usuario admin = new Usuario(
                         null,
                         "admin@gamestore.com",
@@ -321,11 +204,8 @@ public class TestConfig {
                         LocalDate.parse("2000-01-01"),
                         null
                 );
-
-                // Cria e "amarra" o carrinho
                 Carrinho carrinhoAdmin = new Carrinho(admin);
                 admin.setCarrinho(carrinhoAdmin);
-
                 usuarioRepository.save(admin);
                 System.out.println("Usuário administrador cadastrado com sucesso (Login: admin@gamestore.com, Senha: admin1G23)");
             } else {
